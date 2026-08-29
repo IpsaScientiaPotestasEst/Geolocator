@@ -136,8 +136,9 @@ Button.addEventListener("click", function() {
         mapContainer.innerHTML = `
             <iframe 
                 width="100%" 
-                height="400" 
-                src=https://openstreetmap.org{parseFloat(lon)-0.05}%2C${parseFloat(lat)-0.05}%2C${parseFloat(lon)+0.05}%2C${parseFloat(lat)+0.05}&layer=mapnik&marker=${lat}%2C${lon}">
+                height="400"
+                src="https://openstreetmap.org{parseFloat(lon)-0.05}%2C${parseFloat(lat)-0.05}%2C${parseFloat(lon)+0.05}%2C${parseFloat(lat)+0.05}&layer=mapnik&marker=${lat}%2C${lon}"
+                >
             </iframe>
         `;
     })
