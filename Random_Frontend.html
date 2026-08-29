@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Server testing</title>
+
+    <style>
+        body{
+            text-align: center;
+        }
+        </style>
+
+    </head>
+
+
+<body>
+
+<button id="Button">Resquest response</button>
+
+<div id="output"></div>
+
+
+
+
+<script>
+
+let Button = document.getElementById("Button");
+let output = document.getElementById("output");
+
+Button.addEventListener("click",function(){
+    fetch("http://localhost:8000/theApp")
+    .then(response => response.text())
+    .then(data => {output.textContext = data;})
+});
+
+</script>
+
+</body>
+</html>
