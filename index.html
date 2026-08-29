@@ -105,7 +105,9 @@
     <div id="mapContainer"></div>
 </div>
 
-<script>
+
+        
+      <script>
 let Button = document.getElementById("Button");
 let output = document.getElementById("output");
 let mapContainer = document.getElementById("mapContainer");
@@ -113,8 +115,14 @@ let mapContainer = document.getElementById("mapContainer");
 Button.addEventListener("click", function() {
     output.textContent = "Querying live Render node...";
     
+    // FIX: Completely clean target domain pointing explicitly to your app route mapping
     fetch("https://onrender.com")
-    .then(response => response.text())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("HTTP network response error code: " + response.status);
+        }
+        return response.text();
+    })
     .then(coordinates => {
         if (coordinates === "Unknown" || !coordinates.includes(",")) {
             output.textContent = "⚠️ Error: Could not resolve target IP space geometries.";
@@ -125,7 +133,6 @@ Button.addEventListener("click", function() {
         
         let [lat, lon] = coordinates.split(",");
         
-        // FIX: Restored /export/embed.html?bbox= and added the missing $ sign
         mapContainer.innerHTML = `
             <iframe 
                 width="100%" 
@@ -135,8 +142,8 @@ Button.addEventListener("click", function() {
         `;
     })
     .catch(error => {
-        output.textContent = "❌ Connection failed: local server unreachable.";
-        console.error(error);
+        output.textContent = "❌ Connection failed: live server unreachable or CORS handshake dropped.";
+        console.error("Tracking Error Details:", error);
     });
 });
 </script>
