@@ -111,9 +111,9 @@ let output = document.getElementById("output");
 let mapContainer = document.getElementById("mapContainer");
 
 Button.addEventListener("click", function() {
-    output.textContent = "Querying local Flask node...";
+    output.textContent = "Querying live Render node...";
     
-    fetch("https://geolocator-3bjt.onrender.com/app")
+    fetch("https://onrender.com")
     .then(response => response.text())
     .then(coordinates => {
         if (coordinates === "Unknown" || !coordinates.includes(",")) {
@@ -125,7 +125,7 @@ Button.addEventListener("click", function() {
         
         let [lat, lon] = coordinates.split(",");
         
-        
+        // FIX: Restored /export/embed.html?bbox= and added the missing $ sign
         mapContainer.innerHTML = `
             <iframe 
                 width="100%" 
