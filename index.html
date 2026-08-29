@@ -3,7 +3,7 @@
 <head>
     <title>Server Testing - Live Map Tracker</title>
     <style>
-        /* Modern reset and cinematic dark mode background */
+
         body {
             background-color: #0d1117;
             color: #c9d1d9;
@@ -18,7 +18,7 @@
             box-sizing: border-box;
         }
 
-        /* Centralized glassmorphism dashboard container */
+   
         .dashboard-card {
             background: rgba(22, 27, 34, 0.8);
             border: 1px solid #30363d;
@@ -39,7 +39,7 @@
             letter-spacing: -0.5px;
         }
 
-        /* High-tech glow button styling with interactive states */
+    
         #Button {
             background: linear-gradient(135deg, #1f6feb 0%, #0950be 100%);
             color: #ffffff;
@@ -63,7 +63,7 @@
             transform: translateY(1px);
         }
 
-        /* Status log box simulating a mini terminal console */
+   
         #output {
             margin-top: 24px;
             font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
@@ -83,7 +83,7 @@
             justify-content: center;
         }
 
-        /* Cinematic frame layout for the embedded tracking viewport */
+      
         iframe {
             margin-top: 24px;
             border: 1px solid #30363d;
@@ -113,7 +113,7 @@ let mapContainer = document.getElementById("mapContainer");
 Button.addEventListener("click", function() {
     output.textContent = "Querying local Flask node...";
     
-    fetch("http://localhost:8000/app")
+    fetch("https://geolocator-3bjt.onrender.com/app")
     .then(response => response.text())
     .then(coordinates => {
         if (coordinates === "Unknown" || !coordinates.includes(",")) {
