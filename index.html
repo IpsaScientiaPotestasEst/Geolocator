@@ -115,8 +115,8 @@ let mapContainer = document.getElementById("mapContainer");
 Button.addEventListener("click", function() {
     output.textContent = "Querying live Render node...";
     
-    // FIX: Completely clean target domain pointing explicitly to your app route mapping
-    fetch("https://onrender.com")
+  
+    fetch("https://onrender.com/app")
     .then(response => {
         if (!response.ok) {
             throw new Error("HTTP network response error code: " + response.status);
